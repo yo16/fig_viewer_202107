@@ -27,6 +27,11 @@ class BasicReader(object):
         # ロガーを設定
         self.logger = logger or get_default_logger()
 
+        # ファイルの存在チェック
+        if not os.path.exists(file_path):
+            self.logger.error(f'入力ファイル "{file_path}" がありません！')
+            raise FileNotFoundError(f'入力ファイル "{file_path}" がありません！')
+
         # ファイルパスを覚えておく
         self.file_path = file_path
 
@@ -47,8 +52,6 @@ class BasicReader(object):
             読み込むファイルのパス。
             存在しない場合は FileNotFoundError をraiseする。
         """
-        if not os.path.exists(file_path):
-            raise FileNotFoundError(f'入力ファイル "{file_path}" がありません！')
         
         return
 
