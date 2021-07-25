@@ -1,5 +1,5 @@
 """
-BasicReaderモジュールのテスト
+BasicReaderクラスのテスト
 """
 import os
 import sys
@@ -10,11 +10,17 @@ sys.path.append(os.path.join(os.getcwd(), 'src'))
 
 from fig_package.basic_reader import BasicReader
 class TestBasicReader(TestCase):
+    """
+    BasicReaderクラスのテスト
+    """
     def setUp(self):
         """
         テスト前処理
         """
         self.del_file_list = []
+
+        return
+    
     
     def tearDown(self):
         """
@@ -23,12 +29,10 @@ class TestBasicReader(TestCase):
         # ファイル削除
         for f in self.del_file_list:
             os.remove(f)
+        
         return
     
 
-    """
-    BasicReaderクラスのテスト
-    """
     def test_1_not_found(self):
         """
         ファイル存在チェック。

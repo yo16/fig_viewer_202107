@@ -27,10 +27,15 @@ class BasicReader(object):
         # ロガーを設定
         self.logger = logger or get_default_logger()
 
+        # 開始ログ
+        msg = f'Start reading. ({self.__class__.__name__})'
+        self.logger.debug(msg)
+
         # ファイルの存在チェック
         if not os.path.exists(file_path):
-            self.logger.error(f'入力ファイル "{file_path}" がありません！')
-            raise FileNotFoundError(f'入力ファイル "{file_path}" がありません！')
+            msg = f'File not found. ({file_path}) '
+            self.logger.error(msg)
+            raise FileNotFoundError(msg)
 
         # ファイルパスを覚えておく
         self.file_path = file_path

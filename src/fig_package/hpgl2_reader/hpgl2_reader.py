@@ -35,5 +35,11 @@ class Hpgl2Reader(BasicReader):
             読み込むファイルのパス。
             存在しない場合は FileNotFoundError をraiseする。
         """
+        # ファイルを読む
+        hpgl2_text = ''
+        with open(file_path, mode='r') as f:
+            hpgl2_text = f.read()
+        
+        # 変換
 
         return None
