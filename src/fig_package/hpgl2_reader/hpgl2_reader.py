@@ -1,3 +1,6 @@
+
+from logging import Logger
+
 from ..basic_reader import BasicReader
 
 class Hpgl2Reader(BasicReader):
@@ -5,11 +8,19 @@ class Hpgl2Reader(BasicReader):
     HPGL2Reader クラス
     HPGL2を読む。
     """
-    def __init__(self, logger=None):
+    def __init__(self, file_path:str, logger:Logger=None):
         """
         コンストラクタ
+
+        Parameters
+        ----------
+        file_path: str
+            読み込むファイルのパス。
+        logger: Logger
+            ロガー。指定されない場合は別途定義してあるデフォルトロガー。
         """
-        super().__init__(logger)
+        super().__init__(file_path=file_path, logger=logger)
+
 
     def __to_ynf(self, file_path:str) -> None:
         """
