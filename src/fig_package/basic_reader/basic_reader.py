@@ -29,7 +29,7 @@ class BasicReader(object):
 
         # 開始ログ
         msg = f'Start reading. ({self.__class__.__name__})'
-        self.logger.debug(msg)
+        self.logger.info(msg)
 
         # ファイルの存在チェック
         if not os.path.exists(file_path):
@@ -57,7 +57,6 @@ class BasicReader(object):
             読み込むファイルのパス。
             存在しない場合は FileNotFoundError をraiseする。
         """
-        
         return
 
 
