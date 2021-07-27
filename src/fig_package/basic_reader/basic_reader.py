@@ -11,6 +11,7 @@ from ..format.ynf import cYnf
 class BasicReader(object):
     """
     BasicReaderクラス。
+    何かのフォーマットからYnf形式へ変換する処理の基底クラス。
     ファイルを読み込むクラスはこのクラスを継承し、
     コンストラクタで super().__init__(logger) を呼ぶこと。
     """
@@ -42,14 +43,24 @@ class BasicReader(object):
         # ファイルパスを覚えておく
         self.file_path = file_path
 
+
+    def to_ynf(self) -> cYnf:
+        """
+        読み込んだファイルからYnfオブジェクトを生成して返す
+
+        コンストラクタとして連動してやってもよいが、
+        バラせるものはバラすという理由で関数化。
+        (つまりこだわりはないので、コンストラクタでやりたくなったら
+         変更しても問題なし。)
+        """
         # 初期のYnf要素を生成
-        basename = os.path.basename(file_path)
+        basename = os.path.basename(self.file_path)
         basename_no_ext = os.path.splitext(basename)[0]
         self.ynf = cYnf(
             canvas_info={'title': basename_no_ext}, logger=self.logger)
 
         # Ynf形式へ変換
-        self.__to_ynf(file_path)
+        self.__to_ynf(self.file_path)
     
 
     def __to_ynf(self, file_path:str) -> None:
