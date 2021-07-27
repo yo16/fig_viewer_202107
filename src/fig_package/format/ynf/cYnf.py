@@ -8,6 +8,9 @@ class cYnf():
     def __init__(self, canvas_info:Dict, logger=None):
         self.logger = logger or get_default_logger()
 
+        # Ynf要素リスト
+        self.elements = []
+
         # 要素を置く画像全体のサイズ
         self.canvas_width = canvas_info['canvas_width'] if 'canvas_width' in canvas_info else 300
         self.canvas_height = canvas_info['canvas_height'] if 'canvas_height' in canvas_info else 200
@@ -15,9 +18,6 @@ class cYnf():
         # タイトル
         now = datetime.datetime.now()
         self.title = canvas_info['title'] if 'title' in canvas_info else now.strftime('%Y%m%d_%H%M%S')
-
-        # 要素リスト
-        self.elements = []
 
         """
         delete for #28
@@ -31,7 +31,7 @@ class cYnf():
 
     
     def append(self, element:cYnfElement) -> None:
-        """ 描画する要素を追加する
+        """ Ynf要素を追加する
         """
         self.elements.append(element)
 
