@@ -6,6 +6,7 @@ import os
 import shutil
 
 from ..common import get_default_logger, PROCESSED_FILE
+from ..format.ynf import cYnf
 
 class BasicReader(object):
     """
@@ -30,6 +31,7 @@ class BasicReader(object):
         # 開始ログ
         msg = f'Start reading. ({self.__class__.__name__})'
         self.logger.info(msg)
+        self.logger.info(f'file:{file_path}')
 
         # ファイルの存在チェック
         if not os.path.exists(file_path):
@@ -39,6 +41,12 @@ class BasicReader(object):
 
         # ファイルパスを覚えておく
         self.file_path = file_path
+
+        # 初期のYnf要素を生成
+        basename = os.path.basename(file_path)
+        basename_no_ext = os.path.splitext(basename)[0]
+        self.ynf = cYnf(
+            canvas_info={'title': basename_no_ext}, logger=self.logger)
 
         # Ynf形式へ変換
         self.__to_ynf(file_path)
