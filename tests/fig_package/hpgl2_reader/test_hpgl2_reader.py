@@ -35,10 +35,11 @@ class TestHpgl2Reader(TestCase):
 
     def test_1_file_exists(self):
         """
+        とりあえず読むだけ
         """
         file_path = \
             os.path.join( \
                 os.path.dirname(__file__),  \
                 '../../data/hpgl2/A3yoko.dat')
-        h = Hpgl2Reader(file_path)
+        _ = Hpgl2Reader(file_path)
 
