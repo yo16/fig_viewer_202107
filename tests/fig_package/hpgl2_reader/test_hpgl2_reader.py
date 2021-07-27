@@ -17,6 +17,12 @@ class TestHpgl2Reader(TestCase):
         """
         テスト前処理
         """
+        # 存在する正しいHPGL2ファイル
+        self.exist_file1 = \
+            os.path.join( \
+                os.path.dirname(__file__),  \
+                '../../data/hpgl2/A3yoko.dat')
+        
         self.del_file_list = []
 
         return
@@ -37,9 +43,14 @@ class TestHpgl2Reader(TestCase):
         """
         とりあえず読むだけ
         """
-        file_path = \
-            os.path.join( \
-                os.path.dirname(__file__),  \
-                '../../data/hpgl2/A3yoko.dat')
-        _ = Hpgl2Reader(file_path)
+        _ = Hpgl2Reader(self.exist_file1)
+    
+
+    def test_2_to_ynf(self):
+        """
+        Ynf化
+        """
+        rdr = Hpgl2Reader(self.exist_file1)
+        _ = rdr.to_ynf()
+        
 
