@@ -1,8 +1,10 @@
 # YNF(Yo Neutral Format) class
+import datetime
+import pickle
 from typing import Dict
+
 from ...common.funcs import get_default_logger
 from .element import cYnfElement
-import datetime
 
 class cYnf():
     def __init__(self, canvas_info:Dict, logger=None):
@@ -67,3 +69,36 @@ class cYnf():
             max_pos[1] = max(max_pos[1], cur_minmax[1][1])
         
         return [min_pos, max_pos]
+
+
+    def serialize(self, file_path: str) -> None:
+        """
+        シリアライズ（保存）する。
+        """
+        with open(file_path, 'wb') as f:
+            pickle.dump(self, f)
+    
+    
+    @classmethod
+    def deserialize(cls, file_path: str) -> 'cYnf':
+        """
+        デシリアライズして返す
+        """
+        with open(file_path, 'rb') as f:
+            y = pickle.load(f)
+        
+        return y
+    
+
+    def to_str(self) -> str:
+        """
+        文字列化してみる
+        """
+        ret_str = self.__class__.__name__
+
+        self_vars = vars(self)
+        # 変数
+        for k, v in self_vars.items():
+            ret_str += f'\n{k}:{v}'
+        
+        return ret_str
