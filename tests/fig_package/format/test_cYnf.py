@@ -77,6 +77,9 @@ class TestCYnf(TestCase):
         # シリアライズ
         y.serialize(out_file)
 
+        # 削除準備
+        self.del_file_list.append(out_file)
+
 
     def test_4_deserialize(self):
         """
@@ -100,4 +103,7 @@ class TestCYnf(TestCase):
         # デシリアライズ
         y2 = cYnf.deserialize(out_file)
         #print(y2.to_str())
+
+        # 削除準備
+        self.del_file_list.append(out_file)
 
