@@ -1,6 +1,7 @@
 """ 線関係
 """
 from .cYnfElment import cYnfElement
+from ....common.exceptions import IlligalParameterError
 
 class cYnfLine(cYnfElement):
     """ Ynf線分要素クラス
@@ -18,10 +19,18 @@ class cYnfLine(cYnfElement):
         # cYnfLineの場合は、p1,p2のチェックをする
         # （このクラスを継承した子クラスの場合はチェックしない）
         if self.__class__.__name__=='cYnfLine':
-            assert 'p1' in prop, 'p1 not in cYnfLine'
-            assert (type(prop['p1']) is list) or (type(prop['p1']) is tuple), f'p1 is not list.{type(prop["p1"])}'
-            assert 'p2' in prop, 'p2 not in cYnfLine'
-            assert (type(prop['p2']) is list) or (type(prop['p2']) is tuple), f'p2 is not list.{type(prop["p2"])}'
+            if 'p1' not in prop:
+                raise IlligalParameterError('p1 not in cYnfLine')
+            if (type(prop['p1']) is not list) and \
+               (type(prop['p1']) is not tuple):
+                raise IlligalParameterError(
+                    f'p1 is not list.{type(prop["p1"])}')
+            if 'p2' not in prop:
+                raise IlligalParameterError('p2 not in cYnfLine')
+            if (type(prop['p2']) is not list) and \
+               (type(prop['p2']) is not tuple):
+                raise IlligalParameterError(
+                    f'p2 is not list.{type(prop["p2"])}')
 
         if 'border-color' not in prop:
             prop['border-color'] = '#000'
@@ -54,8 +63,10 @@ class cYnfPolyline(cYnfLine):
         isClose(bool): 閉じた線かどうか True/False
     """
     def __init__(self, prop:dict):
-        assert 'points' in prop, 'points not in cYnfPolyline'
-        assert type(prop['points']) is list, 'points is not list'
+        if 'points' not in prop:
+            raise IlligalParameterError('points not in cYnfPolyline')
+        if type(prop['points']) is not list:
+            raise IlligalParameterError('points is not list')
         super().__init__(prop)
 
         if 'isClose' not in prop:
@@ -63,7 +74,9 @@ class cYnfPolyline(cYnfLine):
 
         self.prop['points'] = []
         for p in prop['points']:
-            assert (type(p) is list) or (type(p) is tuple), f'elm in points is not list.{type(p)}'
+            if (type(p) is not list) and (type(p) is not tuple):
+                raise IlligalParameterError(
+                    f'elm in points is not list.{type(p)}')
             self.prop['points'].append([p[0], p[1]])
 
 
@@ -87,10 +100,14 @@ class cYnfBox(cYnfPolyline):
         p2(list): 点２の座標
     """
     def __init__(self, prop:dict):
-        assert 'p1' in prop, 'p1 not in cYnfBox'
-        assert (type(prop['p1']) is list) or (type(prop['p1']) is tuple), 'p1 is not list'
-        assert 'p2' in prop, 'p2 not in cYnfBox'
-        assert (type(prop['p2']) is list) or (type(prop['p2']) is tuple), 'p2 is not list'
+        if 'p1' in prop:
+            raise IlligalParameterError('p1 not in cYnfBox')
+        if (type(prop['p1']) is not list) and (type(prop['p1']) is not tuple):
+            raise IlligalParameterError('p1 is not list')
+        if 'p2' not in prop:
+            raise IlligalParameterError('p2 not in cYnfBox')
+        if (type(prop['p2']) is not list) and (type(prop['p2']) is not tuple):
+            raise IlligalParameterError('p2 is not list')
 
         # 左上
         p1 = [
