@@ -119,10 +119,14 @@ class cYnfBox(cYnfPolyline):
             raise IlligalParameterError('p1 not in cYnfBox')
         if (type(prop['p1']) is not list) and (type(prop['p1']) is not tuple):
             raise IlligalParameterError('p1 is not list')
+        if len(prop['p1'])!=2:
+            raise IlligalParameterError('len(p1) is not 2.')
         if 'p2' not in prop:
             raise IlligalParameterError('p2 not in cYnfBox')
         if (type(prop['p2']) is not list) and (type(prop['p2']) is not tuple):
             raise IlligalParameterError('p2 is not list')
+        if len(prop['p2'])!=2:
+            raise IlligalParameterError('len(p2) is not 2.')
 
         # 左上
         p1 = [
