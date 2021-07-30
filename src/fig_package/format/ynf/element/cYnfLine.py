@@ -75,6 +75,9 @@ class cYnfPolyline(cYnfLine):
             raise IlligalParameterError('points not in cYnfPolyline')
         if type(prop['points']) is not list:
             raise IlligalParameterError('points is not list')
+        if len(prop['points'])<=2:
+            n = len(prop['points'])
+            raise IlligalParameterError(f'Not enough num of points.({n})')
         super().__init__(prop)
 
         if 'isClose' not in prop:
@@ -84,7 +87,11 @@ class cYnfPolyline(cYnfLine):
         for p in prop['points']:
             if (type(p) is not list) and (type(p) is not tuple):
                 raise IlligalParameterError(
-                    f'elm in points is not list.{type(p)}')
+                    f'Elm in points is not list.{type(p)}')
+            if len(p)!=2:
+                l = len(p)
+                raise IlligalParameterError(
+                    f'Elm in points is not point.')
             self.prop['points'].append([p[0], p[1]])
 
 
@@ -108,7 +115,7 @@ class cYnfBox(cYnfPolyline):
         p2(list): 点２の座標
     """
     def __init__(self, prop:dict):
-        if 'p1' in prop:
+        if 'p1' not in prop:
             raise IlligalParameterError('p1 not in cYnfBox')
         if (type(prop['p1']) is not list) and (type(prop['p1']) is not tuple):
             raise IlligalParameterError('p1 is not list')
