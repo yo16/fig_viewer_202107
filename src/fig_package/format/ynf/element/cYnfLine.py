@@ -25,12 +25,20 @@ class cYnfLine(cYnfElement):
                (type(prop['p1']) is not tuple):
                 raise IlligalParameterError(
                     f'p1 is not list.{type(prop["p1"])}')
+            if len(prop['p1'])!=2:
+                l = len(prop['p1'])
+                raise IlligalParameterError(
+                    f'len(p1) is {l}.')
             if 'p2' not in prop:
                 raise IlligalParameterError('p2 not in cYnfLine')
             if (type(prop['p2']) is not list) and \
                (type(prop['p2']) is not tuple):
                 raise IlligalParameterError(
                     f'p2 is not list.{type(prop["p2"])}')
+            if len(prop['p2'])!=2:
+                l = len(prop['p2'])
+                raise IlligalParameterError(
+                    f'len(p2) is {l}.')
 
         if 'border-color' not in prop:
             prop['border-color'] = '#000'
