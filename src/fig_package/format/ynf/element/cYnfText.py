@@ -31,6 +31,11 @@ class cYnfText(cYnfElement):
            (type(prop['pos']) is tuple):
             raise IlligalParameterError(
                 f'pos type is invalid.{str(type(prop["pos"]))}')
+        if len(prop['pos'])!=2:
+            l = len(prop['pos'])
+            raise IlligalParameterError(
+                f'Len(pos) is not 2. ({l})'
+            )
         super().__init__(prop)
 
         if 'text-align' not in prop:
