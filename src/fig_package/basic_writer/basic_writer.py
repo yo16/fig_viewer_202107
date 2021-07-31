@@ -59,7 +59,23 @@ class BasicWriter(object):
         Parameters
         ----------
         ynf: cYnf
-            出力するcYnfファイル
+            出力するcYnfインスタンス
         """
         raise NotImplementedError
     
+
+    def write_from_ynf_file(self, file_path: str):
+        """
+        Ynfファイル指定でファイルを出力する
+        
+        Parameters
+        ----------
+        file_path: str
+            出力するcYnfのシリアライズしたファイル
+        """
+        # デシリアライズする
+        ynf = cYnf.deserialize(file_path)
+
+        # 出力する
+        self.write(ynf)
+
