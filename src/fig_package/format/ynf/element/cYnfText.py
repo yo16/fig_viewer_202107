@@ -1,7 +1,9 @@
 """ 線関係
 """
 from typing import Tuple
+
 from .cYnfElment import cYnfElement
+from ....common.exceptions import IlligalParameterError
 
 class cYnfText(cYnfElement):
     """ Ynf文字列要素クラス
@@ -19,11 +21,16 @@ class cYnfText(cYnfElement):
     posは、text-align、text-valignの示す場所。（左上なら左上）
     """
     def __init__(self, prop:dict):
-        assert 'text' in prop, 'text not in cYnfText'
-        assert prop['text'] is not None, 'text is None'
-        assert 'pos' in prop, 'pos not in cYnfText'
-        assert (type(prop['pos']) is list) or (type(prop['pos']) is tuple), \
-            f'pos type is invalid.{str(type(prop["pos"]))}'
+        if 'text' not in prop:
+            raise IlligalParameterError('text not in cYnfText')
+        if prop['text'] is None:
+            raise IlligalParameterError('text is None')
+        if 'pos' not in prop:
+            raise IlligalParameterError('pos not in cYnfText')
+        if (type(prop['pos']) is not list) and \
+           (type(prop['pos']) is tuple):
+            raise IlligalParameterError(
+                f'pos type is invalid.{str(type(prop["pos"]))}')
         super().__init__(prop)
 
         if 'text-align' not in prop:
@@ -32,12 +39,16 @@ class cYnfText(cYnfElement):
             prop['text-valign'] = 'top'
         if 'font-size' not in prop:
             prop['font-size'] = 8.0
-        assert prop['text-align'] in ['left', 'center', 'right'], \
-            f'text-align value is invalid.{prop["text-align"]}'
-        assert prop['text-valign'] in ['top', 'middle', 'bottom'], \
-            f'text-valign value is invalid.{prop["text-valign"]}'
-        assert (type(prop['font-size']) is int) or (type(prop['font-size']) is float), \
-            f'font-size type is invalid.{str(type(prop["font-size"]))}'
+        if prop['text-align'] not in ['left', 'center', 'right']:
+            raise IlligalParameterError(
+                f'text-align value is invalid.{prop["text-align"]}')
+        if prop['text-valign'] not in ['top', 'middle', 'bottom']:
+            raise IlligalParameterError(
+                f'text-valign value is invalid.{prop["text-valign"]}')
+        if (type(prop['font-size']) is not int) and \
+           (type(prop['font-size']) is float):
+            raise IlligalParameterError(
+                f'font-size type is invalid.{str(type(prop["font-size"]))}')
         
         self.prop['text-align'] = prop['text-align']
         self.prop['text-valign'] = prop['text-valign']
