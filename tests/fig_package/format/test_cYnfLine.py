@@ -49,7 +49,7 @@ class TestCYnfLine(TestCase):
         except IlligalParameterError as e:
             # OK
             pass
-        else: 
+        except:
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
     
@@ -67,7 +67,7 @@ class TestCYnfLine(TestCase):
         except IlligalParameterError as e:
             # OK
             pass
-        else: 
+        except: 
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -85,7 +85,7 @@ class TestCYnfLine(TestCase):
         except IlligalParameterError as e:
             # OK
             pass
-        else: 
+        except: 
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -102,7 +102,7 @@ class TestCYnfLine(TestCase):
         except IlligalParameterError as e:
             # OK
             pass
-        else: 
+        except: 
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -120,7 +120,7 @@ class TestCYnfLine(TestCase):
         except IlligalParameterError as e:
             # OK
             pass
-        else: 
+        except: 
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -138,7 +138,7 @@ class TestCYnfLine(TestCase):
         except IlligalParameterError as e:
             # OK
             pass
-        else: 
+        except: 
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -155,7 +155,7 @@ class TestCYnfLine(TestCase):
         except IlligalParameterError as e:
             # OK
             pass
-        else: 
+        except: 
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -211,7 +211,7 @@ class TestCYnfPolyline(TestCase):
         except IlligalParameterError as e:
             # ok
             pass
-        else:
+        except:
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -228,7 +228,7 @@ class TestCYnfPolyline(TestCase):
         except IlligalParameterError as e:
             # ok
             pass
-        else:
+        except:
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -245,7 +245,7 @@ class TestCYnfPolyline(TestCase):
         except IlligalParameterError as e:
             # ok
             pass
-        else:
+        except:
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -262,7 +262,7 @@ class TestCYnfPolyline(TestCase):
         except IlligalParameterError as e:
             # ok
             pass
-        else:
+        except:
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -330,7 +330,7 @@ class TestCYnfBox(TestCase):
         except IlligalParameterError as e:
             # ok
             pass
-        else:
+        except:
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -348,7 +348,7 @@ class TestCYnfBox(TestCase):
         except IlligalParameterError as e:
             # ok
             pass
-        else:
+        except:
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -366,7 +366,7 @@ class TestCYnfBox(TestCase):
         except IlligalParameterError as e:
             # ok
             pass
-        else:
+        except:
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -384,7 +384,7 @@ class TestCYnfBox(TestCase):
         except IlligalParameterError as e:
             # ok
             pass
-        else:
+        except:
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 

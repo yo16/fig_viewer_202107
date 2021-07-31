@@ -34,6 +34,9 @@ class TestCYnfCircle(TestCase):
             self.assertTrue(False, 'エラーが起こるはず')
         except IlligalParameterError as e:
             pass
+        except:
+            # 別の何かがraiseされたらNG
+            self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
     def test_3_not_enough_parameter2(self):
         """
@@ -47,6 +50,9 @@ class TestCYnfCircle(TestCase):
             self.assertTrue(False, 'エラーが起こるはず')
         except IlligalParameterError as e:
             pass
+        except:
+            # 別の何かがraiseされたらNG
+            self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
     def test_4_not_enough_parameter3(self):
         """
@@ -59,6 +65,9 @@ class TestCYnfCircle(TestCase):
             self.assertTrue(False, 'エラーが起こるはず')
         except IlligalParameterError as e:
             pass
+        except:
+            # 別の何かがraiseされたらNG
+            self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
     def test_5_minmax(self):
         """
@@ -115,6 +124,9 @@ class TestCYnfArc(TestCase):
             self.assertTrue(False, "Exceptionが出るはず")
         except IlligalParameterError as e:
             pass
+        except:
+            # 別の何かがraiseされたらNG
+            self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
     def test_3_error2(self):
         """
@@ -131,6 +143,9 @@ class TestCYnfArc(TestCase):
             self.assertTrue(False, "Exceptionが出るはず")
         except IlligalParameterError as e:
             pass
+        except:
+            # 別の何かがraiseされたらNG
+            self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
     def test_4_error3(self):
         """
@@ -146,6 +161,10 @@ class TestCYnfArc(TestCase):
             self.assertTrue(False, "Exceptionが出るはず")
         except IlligalParameterError as e:
             pass
+        except:
+            # 別の何かがraiseされたらNG
+            self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
+
 
     def test_5_minmax(self):
         """

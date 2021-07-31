@@ -49,7 +49,7 @@ class TestCYnfText(TestCase):
         except IlligalParameterError as e:
             # ok
             pass
-        else:
+        except:
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -66,7 +66,7 @@ class TestCYnfText(TestCase):
         except IlligalParameterError as e:
             # ok
             pass
-        else:
+        except:
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -84,7 +84,7 @@ class TestCYnfText(TestCase):
         except IlligalParameterError as e:
             # ok
             pass
-        else:
+        except:
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -102,7 +102,7 @@ class TestCYnfText(TestCase):
         except IlligalParameterError as e:
             # ok
             pass
-        else:
+        except:
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -120,7 +120,7 @@ class TestCYnfText(TestCase):
         except IlligalParameterError as e:
             # ok
             pass
-        else:
+        except:
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
     
@@ -138,7 +138,7 @@ class TestCYnfText(TestCase):
         except IlligalParameterError as e:
             # ok
             pass
-        else:
+        except:
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -160,7 +160,7 @@ class TestCYnfText(TestCase):
         except IlligalParameterError as e:
             # ok
             pass
-        else:
+        except:
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -182,7 +182,7 @@ class TestCYnfText(TestCase):
         except IlligalParameterError as e:
             # ok
             pass
-        else:
+        except:
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
 
@@ -204,6 +204,6 @@ class TestCYnfText(TestCase):
         except IlligalParameterError as e:
             # ok
             pass
-        else:
+        except:
             # 別の何かがraiseされたらNG
             self.assertTrue(False, 'IlligalParameterErrorが起こるはず')
