@@ -44,6 +44,10 @@ class TestBasicWriter(TestCase):
         正常に動くはず
         """
         w = BasicWriter('./not_exists_file')
+        self.assertEqual(
+            w.__class__.__name__, 'BasicWriter',
+            'インスタンスが正常に作れてない。(Noneとか)'
+        )
     
 
     def test_2_file_exists(self):
@@ -153,3 +157,21 @@ class TestBasicWriter(TestCase):
             self.assertTrue(False, '予期せぬエラー')
 
 
+    def test_6_from_ynf_file(self):
+        """
+        Ynfファイルを使って読むテスト
+        """
+        ynf_file1 = \
+            os.path.join( \
+                os.path.dirname(__file__),  \
+                '../../data/ynf/A3yoko.ynf')
+        
+        try:
+            w = BasicWriter('./not_exists_file')
+            w.write_from_ynf_file(ynf_file1)
+            self.assertTrue(False, 'ここまで進まないはず')
+        except NotImplementedError as e:
+            # write()までは進んでるということだけ確認できればいいか
+            pass
+        except:
+            self.assertTrue(False, '何かのエラー')
