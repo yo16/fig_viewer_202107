@@ -43,6 +43,9 @@ class BasicReader(object):
         # ファイルパスを覚えておく
         self.file_path = file_path
 
+        # readerが格納する要素
+        self.ynf = None
+
 
     def to_ynf(self) -> cYnf:
         """
@@ -59,8 +62,10 @@ class BasicReader(object):
         self.ynf = cYnf(
             canvas_info={'title': basename_no_ext}, logger=self.logger)
 
-        # Ynf形式へ変換
+        # Ynf形式へ変換(self.ynf)
         self.__to_ynf(self.file_path)
+
+        return self.ynf
     
 
     def __to_ynf(self, file_path:str) -> None:

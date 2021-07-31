@@ -1,6 +1,7 @@
 """
 Hpgl2Readerクラスのテスト
 """
+import logging
 import os
 import sys
 from unittest import TestCase
@@ -51,6 +52,23 @@ class TestHpgl2Reader(TestCase):
         Ynf化
         """
         rdr = Hpgl2Reader(self.exist_file1)
-        _ = rdr.to_ynf()
-        
+        y = rdr.to_ynf()
+        self.assertEqual(
+            y.__class__.__name__, 'cYnf',
+            'Hpgl2Reader.to_ynf()がcYnfを返してない'
+        ) 
+    
+    def test_3_ynf_serialize(self):
+        """
+        結合テスト的な感じでシリアライズまで
+        """
+        rdr = Hpgl2Reader(self.exist_file1)
+        y = rdr.to_ynf()
+
+        ynf_file1 = \
+            os.path.join( \
+                os.path.dirname(__file__),  \
+                '../../data/ynf/A3yoko.ynf')
+
+        y.serialize(ynf_file1)
 
