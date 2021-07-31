@@ -46,7 +46,7 @@ class cYnfText(cYnfElement):
             raise IlligalParameterError(
                 f'text-valign value is invalid.{prop["text-valign"]}')
         if (type(prop['font-size']) is not int) and \
-           (type(prop['font-size']) is float):
+           (type(prop['font-size']) is not float):
             raise IlligalParameterError(
                 f'font-size type is invalid.{str(type(prop["font-size"]))}')
         
