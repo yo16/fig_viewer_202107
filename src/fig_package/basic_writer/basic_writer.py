@@ -49,6 +49,9 @@ class BasicWriter(object):
 
             # overwrite指定されている場合はここで消す
             os.remove(file_path)
+        
+        # 属性を設定
+        self.file_path = file_path
 
 
     def write(self, ynf: cYnf):
